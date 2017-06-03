@@ -46,5 +46,35 @@ namespace LinkedListApp
                 }
             }
         }
+
+        public void RemoveLastNode()
+        {
+            if(Head == Tail)
+            {
+                Head = null;
+                Tail = null;
+            }
+            else
+            {
+                var current = Head;
+                while(current.Next != Tail)
+                {
+                    current = current.Next;
+                }
+
+                current.Next = null;
+                Tail = current;
+            }
+        }
+
+        public void RemoveFirtsNode()
+        {
+            if(Head == Tail)
+            {
+                Head = null;
+                Tail = null;
+            }
+            
+        }
     }
 }

@@ -26,6 +26,12 @@ namespace LinkedListApp
             otherLinkedList.AddToEnd(third);
 
             PrintLinkedList(otherLinkedList);
+
+            otherLinkedList.RemoveLastNode();
+            PrintLinkedList(otherLinkedList);
+
+            otherLinkedList.RemoveLastNode();
+            PrintLinkedList(otherLinkedList);
         }
 
         private static void PrintNodes(Node node)
@@ -41,10 +47,12 @@ namespace LinkedListApp
 
         private static void PrintLinkedList(MyLinkedList linkedList)
         {
-            while (linkedList.Head != null)
+            var current = linkedList.Head;
+
+            while (current != null)
             {
-                Console.WriteLine(linkedList.Head.Value);
-                linkedList.Head = linkedList.Head.Next;
+                Console.WriteLine(current.Value);
+                current = current.Next;
             }
 
             Console.ReadLine();
