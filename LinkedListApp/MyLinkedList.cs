@@ -28,7 +28,6 @@ namespace LinkedListApp
         {
             if(node != null)
             {
-                Count++;
                 if (Head == null && Tail == null)
                 {
                     Head = node;
@@ -40,7 +39,7 @@ namespace LinkedListApp
                     Head = node;
                     Head.Next = temp;
                 }
-
+                Count++;
             }
         }
 
