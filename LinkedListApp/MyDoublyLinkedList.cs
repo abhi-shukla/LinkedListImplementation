@@ -61,10 +61,46 @@ namespace LinkedListApp
             }
             Count++;
         }
-
+       
         public void Add(T item)
         {
             AddToFront(new DoublyNode<T>(item));
+        }
+
+        public void RemoveFirst()
+        {
+            if (Count == 0) return;
+
+            if (Count == 1)
+            {
+                Head = null;
+                Tail = null;
+            }
+            else
+            {
+                Head = Head.Next;
+                Head.Previous = null;
+            }
+
+            Count--;
+        }
+
+        public void RemoveLast()
+        {
+            if (Count == 0) return;
+
+            if(Count == 1)
+            {
+                Head = null;
+                Tail = null;
+            }
+            else
+            {
+                Tail = Tail.Previous;
+                Tail.Next = null;
+            }
+
+            Count--;
         }
 
         public void Clear()
@@ -111,7 +147,35 @@ namespace LinkedListApp
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            if (Head.Value.Equals(item))
+            {
+                RemoveFirst();
+                return true;
+            }
+            if (Tail.Value.Equals(item))
+            {
+                RemoveLast();
+                return true;
+            }
+
+            var previous = Head;
+            var current = Head.Next;
+
+            while (current.Next != null)
+            {
+                if(current.Value.Equals(item))
+                {
+                    previous.Next = current.Next;
+                    current.Next.Previous = previous;
+                    Count--;
+                    return true;
+                }
+
+                previous = current;
+                current = current.Next;
+            }
+
+            return false;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
