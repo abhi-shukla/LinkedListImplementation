@@ -2,60 +2,63 @@
 
 namespace LinkedListApp
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var first = new Node { Value = 3 };
-            var second = new Node { Value = 5 };
+            var first = new Node<int>(3);
+            var second = new Node<int>(5);
             //first.Next = second;
-            var third = new Node { Value = 7 };
+            var third = new Node<int>(7);
             //second.Next = third;
             //PrintNodes(first); 
 
-            var linkedList = new MyLinkedList();
+            var linkedList = new MyLinkedList<int>();
             linkedList.AddToFront(third);
             linkedList.AddToFront(second);
             linkedList.AddToFront(first);
+            //Print(linkedList);
 
-            //PrintLinkedList(linkedList);
+            var otherLinkedList = new MyLinkedList<int>();
+            otherLinkedList.AddToEnd(first);
+            otherLinkedList.AddToEnd(second);
+            otherLinkedList.AddToEnd(third);
+            //Print(otherLinkedList);
 
-            var otherLinkedList = new MyLinkedList();
+            //otherLinkedList.RemoveLastNode();
+            //Print(otherLinkedList);
+
+            //otherLinkedList.RemoveLastNode();
+            //Print(otherLinkedList);
+
+            // Remove middle element from linkedlist
+            otherLinkedList.Remove(5);
+            Console.WriteLine("Expected 5 to be removed");
+            Print(otherLinkedList);
+
+            otherLinkedList = new MyLinkedList<int>();
             otherLinkedList.AddToEnd(first);
             otherLinkedList.AddToEnd(second);
             otherLinkedList.AddToEnd(third);
 
-            PrintLinkedList(otherLinkedList);
 
-            otherLinkedList.RemoveLastNode();
-            PrintLinkedList(otherLinkedList);
 
-            otherLinkedList.RemoveLastNode();
-            PrintLinkedList(otherLinkedList);
-        }
+            otherLinkedList = new MyLinkedList<int>();
+            otherLinkedList.AddToEnd(first);
+            otherLinkedList.AddToEnd(second);
+            otherLinkedList.AddToEnd(third);
 
-        private static void PrintNodes(Node node)
-        {            
-            while (node != null)
-            {
-                Console.WriteLine(node.Value);
-                node = node.Next;                
-            }
 
             Console.ReadLine();
         }
 
-        private static void PrintLinkedList(MyLinkedList linkedList)
+        private static void Print<T>(MyLinkedList<T> linkedList)
         {
-            var current = linkedList.Head;
-
-            while (current != null)
+            foreach (var value in linkedList)
             {
-                Console.WriteLine(current.Value);
-                current = current.Next;
+                Console.WriteLine(value);
             }
-
-            Console.ReadLine();
         }
+
     }
 }
