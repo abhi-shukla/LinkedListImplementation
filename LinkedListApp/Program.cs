@@ -23,32 +23,13 @@ namespace LinkedListApp
             otherLinkedList.AddToEnd(first);
             otherLinkedList.AddToEnd(second);
             otherLinkedList.AddToEnd(third);
-            //Print(otherLinkedList);
-
-            //otherLinkedList.RemoveLastNode();
-            //Print(otherLinkedList);
-
-            //otherLinkedList.RemoveLastNode();
-            //Print(otherLinkedList);
-
-            // Remove middle element from linkedlist
-            otherLinkedList.Remove(5);
-            Console.WriteLine("Expected 5 to be removed");
             Print(otherLinkedList);
 
-            otherLinkedList = new MyLinkedList<int>();
-            otherLinkedList.AddToEnd(first);
-            otherLinkedList.AddToEnd(second);
-            otherLinkedList.AddToEnd(third);
+            otherLinkedList.RemoveLastNode();
+            Print(otherLinkedList);
 
-
-
-            otherLinkedList = new MyLinkedList<int>();
-            otherLinkedList.AddToEnd(first);
-            otherLinkedList.AddToEnd(second);
-            otherLinkedList.AddToEnd(third);
-
-
+            otherLinkedList.RemoveLastNode();
+            Print(otherLinkedList);
             Console.ReadLine();
         }
 
